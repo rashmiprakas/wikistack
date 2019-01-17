@@ -10,12 +10,20 @@ app.use(express.static('styleSheets')) //express have an access to styleSheet fo
 
 const PORT = 3000;
 
+const init = async ()=> {
+  await models.User.sync();
+  await models.Page.sync();
+}
+
+
+
+
 app.listen (PORT,()=>{
     console.log(`App listening in port ${PORT}`)
 })
 
-db.authenticate().
-then(() => {
+db.authenticate()
+.then(() => {
   console.log('connected to the database');
 })
 
